@@ -9,7 +9,7 @@ function Navbar() {
             </div>
             <div className="">                
                 <a href="#" className="bg-gray-500 rounded-lg px-3 py-2 text-white no-underline">Register</a>
-                <a href="#" className="bg-gray-500 rounded-lg px-3 py-2 text-white no-underline ml-2">Sign In</a>
+                <a href="signin" className="bg-gray-500 rounded-lg px-3 py-2 text-white no-underline ml-2">Sign In</a>
             </div>
         </div>
     );

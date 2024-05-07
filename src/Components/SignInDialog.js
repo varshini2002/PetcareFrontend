@@ -16,7 +16,7 @@ function handleChange(event) {
 function SignInDialog() {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-            <div className="bg-white p-8 rounded-lg w-100">
+            <div className="bg-white p-8 rounded-lg w-1/3">
                 <h2 className="text-xl font-semibold mb-4">Sign In</h2>
                 <form className="mb-4">
                     <div className="mb-4">

@@ -148,6 +148,19 @@
   font-size: 40px;
 }
 
+.size-header{
+  font-size: 30px;
+  padding-left:4px;
+}
+
+.account {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 40
+}
+
 .pawa {
   font-variation-settings:
   'FILL' 0,
@@ -182,7 +195,7 @@
 }
 
 .Width{
-  width:96.5vw;
+  width:97.5vw;
 }
 
 .Bg-color{
@@ -195,12 +208,3 @@
   
 }
 
-.c-item {
-  height: 480px;
-}
-
-.c-img {
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.6);
-}

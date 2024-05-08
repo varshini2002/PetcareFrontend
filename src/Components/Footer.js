@@ -7,7 +7,7 @@ var year = date.getFullYear();
 
 function Footer() {
     return (
-        <div className="poppins-regular bottom-0 z-50 w-full h-20 bg-gray-800 Footer">
+        <div className="poppins-regular bottom-0 z-50 w-full h-20 Bg-color Footer">
             <div className=" flex items-center justify-center h-full">
                 <img src={Logo} alt="Logo" className="w-10 "/>
                 <p className="pacifico-regular-footer text-white mt-2"> PetCare.</p>

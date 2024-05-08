@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Pages/Home.js';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import SignIn from './Pages/SignIn.js';
+import SignUp from './Pages/SignUp.js';
+import ForgotPassword from './Pages/ForgotPassword.js';
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
           <Route index element={<Home/>}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/signin" element={<SignIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/forgotpassword" element={<ForgotPassword/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -131,7 +131,7 @@
 }
 
 .Background{
-  background-image: url('./Assests/Hero1.jpg');
+  background-image: url('./Assets/Hero1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   width:100vw;
@@ -145,6 +145,11 @@
 .Bg-color{
   background-color: #454d57;
   opacity: 50;
+}
+
+.Text-color{
+  color: #454d57;
+  
 }
 
 .c-item {

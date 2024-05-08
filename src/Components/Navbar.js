@@ -11,7 +11,7 @@ function Navbar() {
                 <a href="#" className="name no-underline ml-1 text-white font-bold  pacifico-regular">PetCare.</a>
             </div>
             <div className="">                
-                <a href="#" className="poppins-regular bg-gray-500 rounded-lg px-3 py-2 text-white no-underline">Register</a>
+                <a href="signup" className="poppins-regular bg-gray-500 rounded-lg px-3 py-2 text-white no-underline">Register</a>
                 <a href="signin" className="poppins-regular bg-gray-500 rounded-lg px-3 py-2 text-white no-underline ml-2">Sign In</a>
             </div>
         </div>

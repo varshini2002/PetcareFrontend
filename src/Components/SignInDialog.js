@@ -28,13 +28,13 @@ function SignInDialog() {
                         <input type="password" id="password" name="password" className="mt-1 px-4 py-2 w-full border rounded-md" />
                     </div>
                     <div className="flex justify-between items-center">
-                    <a href="/forgotpassword" className="text-blue-500 font-semibold pr-40">Forgot Password?</a>
-                        <button onClick={(e) => handleChange(e)} className="bg-blue-500 text-white px-6 py-2 rounded-md">Sign In</button>
+                    <a href="/forgotpassword" className="Text-color font-semibold pr-40">Forgot Password?</a>
+                        <button onClick={(e) => handleChange(e)} className="Bg-color text-white px-6 py-2 rounded-md">Sign In</button>
                     </div>
                 </form>
                 <div className="text-center">
                     <p className="text-sm">Don't have an account?</p>
-                    <a href="/signup" className="text-blue-500 font-semibold">Sign Up</a>
+                    <a href="/signup" className="Text-color font-semibold">Sign Up</a>
                 </div>
             </div>
         </div>

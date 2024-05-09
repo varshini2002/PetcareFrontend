@@ -10,7 +10,7 @@ function NavbarSignIn() {
     };
 
     return (
-        <div className="absolute my-2 Bg-color  z-10 text-white px-3 flex Width mx-2 h-17 justify-between items-center rounded-xl ">
+        <div className="relative top-2 Bg-color z-10 text-white px-3 flex Width mx-2 h-17 justify-between items-center rounded-xl ">
             <div className="flex ">                
                 <a href="#" className="logo no-underline justify-center">
                     <img src={Logo} alt="Logo" className="w-12 mt-3"/>

@@ -127,7 +127,11 @@
   'GRAD' 0,
   'opsz' 24
 }
-
+.scale-1500 {
+  --tw-scale-x: 5;
+  --tw-scale-y: 5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .play{
   font-variation-settings:
   'FILL' 0,
@@ -161,22 +165,6 @@
   'opsz' 40
 }
 
-.pawa {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
-
-.pawb {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
-
 .App {
   text-align: center;
 }
@@ -186,13 +174,6 @@
   margin-top:auto;
 }
 
-.Background{
-  background-image: url('./Assets/Hero1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  width:100vw;
-  /* height:max-content;  */
-}
 
 .Width{
   width:97.5vw;
@@ -208,3 +189,6 @@
   
 }
 
+.height{
+  height:81vh;
+}

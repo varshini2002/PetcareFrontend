@@ -3,7 +3,7 @@ import React from 'react';
 function SignUpDialog() {
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-            <div className="bg-white p-8 rounded-lg w-3/6">
+            <div className="bg-white p-8 rounded-lg w-2/6">
                 <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
                 <form className="mb-4">
                     <div className="mb-4">
@@ -20,6 +20,10 @@ function SignUpDialog() {
                             <input type="text" id="lastname" name="lastname" className="mt-1 px-4 py-2 w-full border rounded-md" />
                         </div>
                     </div>
+                    {/* <div className="mb-4">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" className="mt-1 px-4 py-2 w-full border rounded-md" />
+                    </div> */}
                     <div className="mb-4">
                         <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
                         <input type="password" id="password" name="password" className="mt-1 px-4 py-2 w-full border rounded-md" />

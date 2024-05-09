@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../Assets/Logo.png'
+import LogOutMenu from './LogOutMenu';
 
 function NavbarSignIn() {
 
@@ -17,11 +18,12 @@ function NavbarSignIn() {
                 <a href="#" className="name no-underline ml-1 text-white font-bold  pacifico-regular">PetCare.</a>
             </div>
             
-            <p className=" absolute right-14 top-5 poppins-regular text-white">Welcome, {userProfile.username}!</p> 
+            <p className=" absolute right-20 top-5 poppins-regular text-white">Welcome, {userProfile.username}!</p> 
             
             
             <div className="account"> 
-            <span class="material-symbols-outlined size-header">account_circle</span>
+            <LogOutMenu/>
+            
             </div>
         </div>
     );

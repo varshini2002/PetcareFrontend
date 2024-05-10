@@ -8,6 +8,7 @@ import ForgotPassword from './Pages/ForgotPassword.js';
 import Dashboard from './Pages/Dashboard.js';
 import AddPetPage from './Pages/AddPetPage.js';
 import ViewPetsPage from './Pages/ViewPetsPage.js';
+import BookingAppointmentPage from './Pages/BookingAppointmentPage.js';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/addpet" element={<AddPetPage/>}/>
           <Route path="/viewpets" element={<ViewPetsPage/>}/>
+          <Route path="/bookslots" element={<BookingAppointmentPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

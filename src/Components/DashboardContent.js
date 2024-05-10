@@ -9,7 +9,7 @@ const DashboardContent = () => {
     function handleClick(event) {
         console.log();
         if(event.currentTarget.querySelector('h3').innerText==="Booking Slots"){
-            navigate('/slots');
+            navigate('/bookslots');
         }else if(event.currentTarget.querySelector('h3').innerText==="View Bookings"){
             navigate('/bookings');
         } else if(event.currentTarget.querySelector('h3').innerText==="Check Features"){

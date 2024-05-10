@@ -30,7 +30,7 @@ const DashboardContent = () => {
             <div className="flex">
                 <div className="container mx-auto px-4 mt-24 ">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div className='absolute right-1/2 top-1/2 scale-1500 opacity-1 0'> <img src={LoGo} alt="Logo"/></div>
+                        {/* <div className='absolute right-1/2 top-1/2 scale-1500 opacity-1 0'> <img src={LoGo} alt="Logo"/></div> */}
 
                         <div onClick={(e) => handleClick(e)} className="bg-red-200 bg-opacity-50 z-50 h-36 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
                             <h3 className="text-xl font-semibold mb-2">Booking Slots</h3>

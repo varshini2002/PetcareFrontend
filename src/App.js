@@ -6,6 +6,7 @@ import SignIn from './Pages/SignIn.js';
 import SignUp from './Pages/SignUp.js';
 import ForgotPassword from './Pages/ForgotPassword.js';
 import Dashboard from './Pages/Dashboard.js';
+import AddPetPage from './Pages/AddPetPage.js';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/forgotpassword" element={<ForgotPassword/>}/>
           <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/addpet" element={<AddPetPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

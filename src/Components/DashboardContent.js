@@ -17,7 +17,7 @@ const DashboardContent = () => {
         } else if(event.currentTarget.querySelector('h3').innerText==="Check Availability"){
             navigate('/availability');
         } else if(event.currentTarget.querySelector('h3').innerText==="My Pets"){  
-            navigate('/pets');
+            navigate('/viewpets');
         } else if(event.currentTarget.querySelector('h3').innerText==="Add a Pet"){
             navigate('/addpet');
         } else if(event.currentTarget.querySelector('h3').innerText==="Contact Us"){

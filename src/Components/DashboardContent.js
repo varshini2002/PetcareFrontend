@@ -11,7 +11,7 @@ const DashboardContent = () => {
         if(event.currentTarget.querySelector('h3').innerText==="Booking Slots"){
             navigate('/bookslots');
         }else if(event.currentTarget.querySelector('h3').innerText==="View Bookings"){
-            navigate('/bookings');
+            navigate('/viewbookings');
         } else if(event.currentTarget.querySelector('h3').innerText==="Check Features"){
             navigate('/features');
         } else if(event.currentTarget.querySelector('h3').innerText==="Check Availability"){

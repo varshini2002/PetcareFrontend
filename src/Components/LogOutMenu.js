@@ -12,12 +12,12 @@ function LogOutMenu() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (event) => {
-    // if(event.currentTarget.innerText==="Manage Profile"){
-    //     navigate('/usersignin');
-    // }
-    // else
+    if(event.currentTarget.innerText==="My Profile"){
+        navigate('/myprofile');
+    }
+    else
      if(event.currentTarget.innerText==="Log Out"){
-        navigate('/restaurantsignin');
+        navigate('/');
     }
     setAnchorEl(null);
   };
@@ -42,8 +42,9 @@ function LogOutMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        {/* <MenuItem onClick={(e)=>handleClose(e)} >Manage Profile</MenuItem> */}
-        <MenuItem onClick={(e)=>handleClose(e)}>Log Out </MenuItem>
+        
+        <MenuItem onClick={(e)=>handleClose(e)}>My Profile </MenuItem>
+        <MenuItem onClick={(e)=>handleClose(e)} >Log Out </MenuItem>
       </Menu>
     </div>
   );

@@ -1,9 +1,28 @@
 import React from 'react';
+import { useRef, useEffect } from "react";
+
+function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+            window.location.href = "/";
+        }
+      }
+      
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+       
+      document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
 
 function SignUpDialog() {
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-            <div className="bg-white p-8 rounded-lg w-2/6">
+            <div ref={wrapperRef} className="bg-white p-8 rounded-lg w-2/6">
                 <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
                 <form className="mb-4">
                     <div className="mb-4">

@@ -26,10 +26,10 @@ const DashboardContent = () => {
         
     }
     return (
-        <div className="height  flex flex-col mt-2">
+        <div className="height flex flex-col mt-2">
             <div className="flex">
                 <div className="container mx-auto px-4 mt-24 ">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                         {/* <div className='absolute right-1/2 top-1/2 scale-1500 opacity-1 0'> <img src={LoGo} alt="Logo"/></div> */}
 
                         <div onClick={(e) => handleClick(e)} className="bg-red-200 bg-opacity-50 z-50 h-36 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
@@ -42,10 +42,10 @@ const DashboardContent = () => {
                             <p className="text-sm text-gray-600 w-2/3 ">View your existing bookings.</p>
                         </div>
 
-                        <div onClick={(e) => handleClick(e)} className="bg-amber-200 bg-opacity-50 z-50 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
+                        {/* <div onClick={(e) => handleClick(e)} className="bg-amber-200 bg-opacity-50 z-50 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
                             <h3 className="text-xl font-semibold mb-2">Check Availability</h3>
                             <p className="text-sm text-gray-600 w-2/3 ">Explore all features available.</p>
-                        </div>
+                        </div> */}
 
                         <div onClick={(e) => handleClick(e)} className="bg-purple-200 bg-opacity-50 z-50 h-36 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
                             <h3 className="text-xl font-semibold mb-2">My Pets</h3>
@@ -57,10 +57,10 @@ const DashboardContent = () => {
                             <p className="text-sm text-gray-600 w-2/3 ">Explore all features available.</p>
                         </div>
 
-                        <div onClick={(e) => handleClick(e)} className="bg-blue-200 bg-opacity-50 z-50 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
+                        {/* <div onClick={(e) => handleClick(e)} className="bg-blue-200 bg-opacity-50 z-50 hover:scale-105 rounded-lg poppins-regular shadow p-6 cursor-pointer">
                             <h3 className="text-xl font-semibold mb-2">Contact Us</h3>
                             <p className="text-sm text-gray-600 w-2/3 ">Explore all features available.</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

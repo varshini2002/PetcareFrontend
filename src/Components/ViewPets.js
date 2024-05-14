@@ -21,7 +21,7 @@ function ViewPets() {
     }, []);
 
     return (
-        <div className="bg-white rounded-lg shadow p-6 ">
+        <div className="bg-white rounded-lg shadow p-6 pb-48">
             {pets.length === 0 ? (
                 <p className='poppins-regular'>No pets found.</p>
             ) : (

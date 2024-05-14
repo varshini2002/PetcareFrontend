@@ -28,7 +28,7 @@ function ViewAppointments() {
     };
 
     return (
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-6 pb-48">
             <h3 className="text-lg font-semibold mb-2">View Booked Appointments</h3>
             {bookedAppointments.length === 0 ? (
                 <p>No booked appointments found.</p>

@@ -13,7 +13,7 @@ function LogOutMenu() {
   };
   const handleClose = (event) => {
     if(event.currentTarget.innerText==="My Profile"){
-        navigate('/myprofile');
+        navigate('/manageprofile');
     }
     else
      if(event.currentTarget.innerText==="Log Out"){

@@ -10,6 +10,9 @@ import AddPetPage from './Pages/AddPetPage.js';
 import ViewPetsPage from './Pages/ViewPetsPage.js';
 import BookingAppointmentPage from './Pages/BookingAppointmentPage.js';
 import ViewAppointmentPage from './Pages/ViewAppointmentPage.js';
+import EditPetPage from './Pages/EditPetPage.js';
+import ManageProfilePage from './Pages/ManageProfilePage.js';
+import ResetPasswordPage from './Pages/ResetPasswordPage.js';
 
 
 function App() {
@@ -27,6 +30,9 @@ function App() {
           <Route path="/viewpets" element={<ViewPetsPage/>}/>
           <Route path="/bookslots" element={<BookingAppointmentPage/>}/>          
           <Route path="/viewbookings" element={<ViewAppointmentPage/>}/>
+          <Route path="/editpet" element={<EditPetPage/>}/>
+          <Route path="/manageprofile" element={<ManageProfilePage/>}/>
+          <Route path="/reset-password" element={<ResetPasswordPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

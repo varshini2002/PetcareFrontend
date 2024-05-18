@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../Assets/Logo.png'
 import LogOutMenu from './LogOutMenu';
 
-function NavbarSignIn() {
+function NavbarTransparent() {
 
     const userProfile = {
         username: 'Name',
@@ -10,7 +10,7 @@ function NavbarSignIn() {
     };
 
     return (
-        <div className="relative top-2 Bg-color z-10 text-white px-3 flex Width mx-2 h-17 justify-between items-center rounded-xl ">
+        <div className="relative top-2 bg-transparent z-10 text-white px-3 flex Width mx-2 h-17 justify-between items-center rounded-xl ">
             <div className="flex ">                
                 <a href="/dashboard" className="logo no-underline justify-center">
                     <img src={Logo} alt="Logo" className="w-12 mt-3"/>
@@ -29,4 +29,4 @@ function NavbarSignIn() {
     );
   }
   
-  export default NavbarSignIn;
+  export default NavbarTransparent;

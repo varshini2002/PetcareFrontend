@@ -50,7 +50,7 @@ function AddPetForm() {
 
     return (
         <div className='flex justify-center bg-gray-100 items-center'>
-            <div className="bg-white rounded-lg shadow p-6 w-1/3">
+            <div className="bg-white rounded-lg shadow p-6 w-1/3 my-5">
                 <h3 className="text-lg font-semibold mb-2">Add Pet</h3>
                 <form>
                 <div className="mb-4">
@@ -80,7 +80,7 @@ function AddPetForm() {
                     <button type="button" onClick={handleAddPet} className="Bg-color text-white py-2 px-4 rounded hover:bg-gray-900">Add Pet</button>
                 </form>
                 <Snackbar
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                     open={snackbarOpen}
                     autoHideDuration={6000}
                     onClose={closeSnackbar}

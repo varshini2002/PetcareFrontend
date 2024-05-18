@@ -99,7 +99,7 @@ function ViewAppointments() {
                                     <p><strong>Start Date:</strong> {appointment.startTime}</p>
                                     <p><strong>End Date:</strong> {appointment.endTime}</p>
                                     <p><strong>Pet:</strong> {appointment.petName}</p>
-                                    <button onClick={() => handleEditAppointment(appointment.id)} className="bg-gray-500 text-white px-4 py-2 rounded mr-2">Edit</button>
+                                    {/* <button onClick={() => handleEditAppointment(appointment.id)} className="bg-gray-500 text-white px-4 py-2 rounded mr-2">Edit</button> */}
                                     <button onClick={() => handleCancelAppointment(appointment.petName)} className="bg-gray-800 text-white px-4 py-2 rounded">Cancel</button>
                                     <button onClick={() => alert(`Amount for this appointment: ${calculateAmount(new Date(appointment.startTime), new Date(appointment.endTime))}`)} className="Bg-color hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">View My Bill</button>
                                 </div>
@@ -110,7 +110,7 @@ function ViewAppointments() {
                 </div>
             )}
              <Snackbar
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 open={snackbarOpen}
                 autoHideDuration={6000}
                 onClose={closeSnackbar}

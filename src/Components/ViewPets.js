@@ -93,7 +93,7 @@ function ViewPets() {
                 </div>
             )}
             <Snackbar
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 open={snackbarOpen}
                 autoHideDuration={6000}
                 onClose={closeSnackbar}

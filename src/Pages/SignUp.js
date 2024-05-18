@@ -5,7 +5,7 @@ import SignUpDialog from "../Components/SignUpDialog";
 function Signup() {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <SignUpDialog />
       {/* <Footer /> */}
     </div>

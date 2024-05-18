@@ -192,3 +192,21 @@
 .height{
   height:81vh;
 }  
+
+.grid-image{
+  background-size: cover;
+  background-position:top;
+  background-color: #222222a9;
+  background-blend-mode: hard-light;
+  transition:all 0.5s ease-in-out;
+}
+
+.grid-image:hover{
+  background-color: #999;
+  background-position: center;
+  box-shadow:0 0 4px #fff;
+}
+
+.bg-radient{
+  background: linear-gradient(to bottom, #bbb4af, #ffffff);
+}

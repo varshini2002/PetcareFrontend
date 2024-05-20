@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Cookies from 'js-cookie';
+import Snackbar from '@mui/material/Snackbar';
+import SnackbarContent from '@mui/material/SnackbarContent';
 
 function BookingAppointment() {
     const [ownerDetails, setOwnerDetails] = useState({
@@ -15,6 +17,9 @@ function BookingAppointment() {
     const [selectedPet, setSelectedPet] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarType, setSnackbarType] = useState('success'); // or 'error'
 
     useEffect(() => {
         // Retrieve token from cookie
@@ -34,7 +39,7 @@ function BookingAppointment() {
                         lastName: userData.lastName,
                         phoneNumber: userData.phoneNumber,
                         address: userData.address,
-                        email:email,
+                        email: email,
                     });
                 })
                 .catch(error => {
@@ -44,22 +49,23 @@ function BookingAppointment() {
     }, []);
 
     useEffect(() => {
-const token=Cookies.get('token');
-if (token) {
-    // Decode token to get user email
-    const decodedToken = jwtDecode(token);
-    const email = decodedToken.sub;
-console.log(token);
-        const fetchPets = async () => {
-            try {
-                const response = await axios.get(`http://localhost:8090/getPetByOwnerEmail?email=${email}`)
-                setPets(response.data);
-            } catch (error) {
-                console.error('Error fetching pets:', error);
-            }
-        };
+        const token = Cookies.get('token');
+        if (token) {
+            // Decode token to get user email
+            const decodedToken = jwtDecode(token);
+            const email = decodedToken.sub;
+            console.log(token);
+            const fetchPets = async () => {
+                try {
+                    const response = await axios.get(`http://localhost:8090/getPetByOwnerEmail?email=${email}`);
+                    setPets(response.data);
+                } catch (error) {
+                    console.error('Error fetching pets:', error);
+                }
+            };
 
-        fetchPets();}
+            fetchPets();
+        }
     }, []);
 
     const handlePetChange = (e) => {
@@ -77,7 +83,7 @@ console.log(token);
     const handleSubmit = async () => {
         try {
             console.log(startDate);
-           
+
             const response = await axios.post('http://localhost:8090/createBooking', {
                 ownerName: ownerDetails.name,
                 ownerEmail: ownerDetails.email,
@@ -85,19 +91,29 @@ console.log(token);
                 ownerAddress: ownerDetails.address,
                 startTime: startDate, // Pass the actual startDate value
                 endTime: endDate,
-                petName:selectedPet,
-                
+                petName: selectedPet,
                 // Pass the actual endDate value
             });
             console.log('Booking submitted:', response.data);
+
+            setSnackbarType('success');
+            setSnackbarMessage('Booking successful!');
+            setSnackbarOpen(true);
+
             setSelectedPet('');
             setStartDate(''); // Resetting the input fields
             setEndDate(''); // Resetting the input fields
         } catch (error) {
             console.error('Error submitting booking:', error);
+            setSnackbarType('error');
+            setSnackbarMessage('Error submitting booking');
+            setSnackbarOpen(true);
         }
     };
-    
+
+    const closeSnackbar = () => {
+        setSnackbarOpen(false);
+    };
 
     return (
         <div className="bg-white rounded-lg shadow p-6 w-1/2 mx-auto my-5">
@@ -136,6 +152,18 @@ console.log(token);
                 <input type="date" value={endDate} onChange={handleEndDateChange} className="form-input mt-1 block w-full rounded-md border " />
             </div>
             <button onClick={handleSubmit} className="Bg-color text-white py-2 px-4 rounded hover:bg-gray-900 poppins-regular">Book Appointment</button>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={closeSnackbar}
+            >
+                <SnackbarContent
+                    message={snackbarMessage}
+                    style={{ backgroundColor: snackbarType === 'success' ? '#4caf50' : '#f44336' }}
+                    action={<button className="text-white" onClick={closeSnackbar}>Close</button>}
+                />
+            </Snackbar>
         </div>
     );
 }

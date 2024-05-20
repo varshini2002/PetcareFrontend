@@ -1,6 +1,6 @@
 
 import NavbarSignIn from "../Components/NavbarSignIn";
-import Footer from "../Components/Footer";
+// import Footer from "../Components/Footer";
 import ManageProfile from "../Components/ManageProfile";
 
 function ManageProfilePage() {
@@ -8,7 +8,7 @@ function ManageProfilePage() {
         <div>
             <NavbarSignIn/>
             <ManageProfile/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     );
 }

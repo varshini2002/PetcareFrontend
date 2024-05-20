@@ -4,10 +4,6 @@ import LogOutMenu from './LogOutMenu';
 
 function NavbarSignIn() {
 
-    const userProfile = {
-        username: 'Name',
-        email: 'name@example.com'
-    };
 
     return (
         <div className="relative top-2 Bg-color z-10 text-white px-3 flex Width mx-2 h-17 justify-between items-center rounded-xl ">

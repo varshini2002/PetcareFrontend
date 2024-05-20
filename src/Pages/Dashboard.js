@@ -1,5 +1,4 @@
 import React from "react";
-import NavbarSignIn from "../Components/NavbarSignIn";
 import FooterTransparent from "../Components/FooterTransparent";
 import DashboardContent from "../Components/DashboardContent";
 import NavbarTransparent from "../Components/NavbarTransparent";

@@ -61,7 +61,7 @@ function EditPet() {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
-                        <input type="text" id="name" name="name" value={editedPet.name} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
+                        <input type="text" readOnly id="name" name="name" value={editedPet.name} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age:</label>
@@ -69,11 +69,11 @@ function EditPet() {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="breed" className="block text-sm font-medium text-gray-700">Breed:</label>
-                        <input type="text" id="breed" name="breed" value={editedPet.breed} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
+                        <input type="text" id="breed" readOnly name="breed" value={editedPet.breed} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="species" className="block text-sm font-medium text-gray-700">Species:</label>
-                        <input type="text" id="species" name="species" value={editedPet.species} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
+                        <input type="text" id="species" readOnly name="species" value={editedPet.species} onChange={handleChange} className="form-input mt-1 block w-full border rounded-md" />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="notes" className="block text-sm font-medium text-gray-700">Notes:</label>

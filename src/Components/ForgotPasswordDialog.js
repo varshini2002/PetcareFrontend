@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Snackbar from '@mui/material/Snackbar';
+
 
 function ForgotPasswordDialog() {
   const [showOTP, setShowOTP] = useState(false);
@@ -9,7 +11,7 @@ function ForgotPasswordDialog() {
   const [otpValues, setOTPValues] = useState(Array(6).fill(""));
   const [timer, setTimer] = useState(60);
   const [showResend, setShowResend] = useState(false);
-  
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,16 +20,14 @@ function ForgotPasswordDialog() {
     try {
       const response = await axios.post("http://localhost:8090/api/v1/auth/forgotPassword", { email });
       if (response.status === 200) {
-        // Show OTP dialog if the request is successful
         setShowOTP(true);
       } else {
-        // Handle error response
         setErrorMessage(response.data.message);
       }
     } catch (error) {
-      // Handle network errors
       console.error("Error:", error);
-      setErrorMessage("An error occurred. Please try again later.");
+      setErrorMessage("Enter valid email");
+      setSnackbarOpen(true);
     }
   };
 
@@ -43,14 +43,13 @@ function ForgotPasswordDialog() {
           console.log("OTP validation successful");
           navigate("/reset-password", { state: { email: email } });
         } else {
-          // Handle failure
-          // Set error message or perform actions accordingly
+          setSnackbarOpen(true);
         }
       })
       .catch((error) => {
-        console.error("Error validating OTP:", error);
-        // Handle error
-        // Set error message or perform actions accordingly
+        // console.error("Error validating OTP:", error);
+        setErrorMessage("Error validating OTP");
+        setSnackbarOpen(true);
       });
   };
 
@@ -68,15 +67,24 @@ function ForgotPasswordDialog() {
     return () => clearInterval(interval);
   }, [timer]);
 
-  const handleResendClick = () => {
-    setTimer(60);
-    setShowResend(false);
-    setOTPValues(Array(6).fill(""));
-  };
+  // const handleResendClick = () => {
+  //   setTimer(10);
+  //   setShowResend(false);
+  //   setOTPValues(Array(6).fill(""));
+    
+  // }
 
-  const handleInputChange = (index, value) => {
-    if (value === "" || (value >= "0" && value <= "9")) {
-      const newValues = [...otpValues];
+  const handleInputChange = (event, index) => {
+    let value = event.target.value;
+    const newValues = [...otpValues];
+
+    if (event.key === "Backspace") {
+      newValues[index] = "";
+      setOTPValues(newValues);
+      if (index !== 0) {
+        document.getElementById(`input-${index - 1}`).focus();
+      }
+    } else if (value === "" || (value >= "0" && value <= "9")) {
       newValues[index] = value;
       setOTPValues(newValues);
 
@@ -87,6 +95,13 @@ function ForgotPasswordDialog() {
         
       }
     }
+  };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
   };
 
   return (
@@ -120,10 +135,10 @@ function ForgotPasswordDialog() {
                 >
                   Send OTP
                 </button>
-                <a href="/login" className="text-color text-sm font-semibold mr-0 underline">Cancel</a>
+                <a href="/signi" className="text-gray-500 text-sm font-semibold mr-0 underline">Cancel</a>
               </div>
             </form>
-            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            {/* {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>} */}
           </div>
         </div>
       ) : (
@@ -139,7 +154,8 @@ function ForgotPasswordDialog() {
                   id={`input-${index}`}
                   maxLength="1"
                   value={otpValues[index]}
-                  onChange={(e) => handleInputChange(index, e.target.value)}
+                  onChange={(e) => handleInputChange(e, index)}
+                  onKeyDown={(e) => handleInputChange(e, index)}
                 />
               ))}
             </div>
@@ -154,8 +170,7 @@ function ForgotPasswordDialog() {
                 <button
                   id="resend"
                   className="text-black px-6 py-2 rounded-md mt-4"
-                  onClick={handleResendClick}
-                >
+                  onClick={handleChange}                >
                   Resend
                 </button>
               ) : (
@@ -167,6 +182,13 @@ function ForgotPasswordDialog() {
           </div>
         </div>
       )}
+
+<Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message={errorMessage}
+      />
     </div>
   );
 }

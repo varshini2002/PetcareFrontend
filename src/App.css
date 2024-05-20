@@ -197,7 +197,7 @@
   background-size: cover;
   background-position:top;
   background-color: #222222a9;
-  background-blend-mode: hard-light;
+  background-blend-mode: overlay;
   transition:all 0.5s ease-in-out;
 }
 

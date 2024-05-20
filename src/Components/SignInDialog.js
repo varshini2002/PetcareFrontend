@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+import { Snackbar } from '@mui/material';
 
 function SignInDialog() {
     const navigate = useNavigate();
     const [loginMessage, setLoginMessage] = useState("");
+
+    const [errorMessage, setErrorMessage] = useState('');
+    const [openSnackbar, setOpenSnackbar] = useState(false);
    
     function handleChange(event) {
       event.preventDefault();
@@ -26,10 +30,14 @@ function SignInDialog() {
           }
         })
         .catch(error => {
-          console.error('Error logging in:', error);
-          setLoginMessage('An error occurred while logging in');
+          setErrorMessage('Incorrect email or password');
+          setOpenSnackbar(true);
         });
     }
+
+    const handleCloseSnackbar = () => {
+      setOpenSnackbar(false);
+    };
    
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
@@ -55,6 +63,12 @@ function SignInDialog() {
                     <a href="/signup" className="Text-color font-semibold">Sign Up</a>
                 </div>
           </div>
+          <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        message={errorMessage}
+      />
       </div>
     );
 }

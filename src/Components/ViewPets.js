@@ -66,7 +66,7 @@ function ViewPets() {
     };
 
     return (
-        <div className="bg-white rounded-lg shadow p-6 pb-48">
+        <div className="bg-white rounded-lg  p-6 pb-48 w-full">
             {loading ? (
                 <p className='poppins-regular'>Loading pets...</p>
             ) : (

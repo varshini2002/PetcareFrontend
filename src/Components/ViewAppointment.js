@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
+// import { Navigate } from 'react-router-dom';
 
 function ViewAppointments() {
-    const navigate = useNavigate();
     const [bookedAppointments, setBookedAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -38,9 +37,6 @@ function ViewAppointments() {
         }
     }, []);
 
-    const handleEditAppointment = (appointmentId) => {
-        navigate(`/editappointment?appointmentId=${appointmentId}`);
-    };
 
     const handleCancelAppointment = async (petName, ) => {
         console.log( petName);
@@ -85,7 +81,7 @@ function ViewAppointments() {
 
 
     return (
-        <div className="bg-white rounded-lg shadow p-6 pb-48">
+        <div className="bg-white rounded-lg p-6 pb-48">
             {loading ? (
                 <p>Loading appointments...</p>
             ) : (
@@ -101,7 +97,7 @@ function ViewAppointments() {
                                     <p><strong>Pet:</strong> {appointment.petName}</p>
                                     {/* <button onClick={() => handleEditAppointment(appointment.id)} className="bg-gray-500 text-white px-4 py-2 rounded mr-2">Edit</button> */}
                                     <button onClick={() => handleCancelAppointment(appointment.petName)} className="bg-gray-800 text-white px-4 py-2 rounded">Cancel</button>
-                                    <button onClick={() => alert(`Amount for this appointment: ${calculateAmount(new Date(appointment.startTime), new Date(appointment.endTime))}`)} className="Bg-color hover:bg-gray-900 text-white font-bold py-2 px-4 rounded">View My Bill</button>
+                                    <button onClick={() => alert(`Amount for this appointment: ${calculateAmount(new Date(appointment.startTime), new Date(appointment.endTime))}`)} className="Bg-color hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mx-2">View My Bill</button>
                                 </div>
                                 
                             ))}

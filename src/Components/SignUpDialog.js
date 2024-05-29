@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Snackbar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -14,8 +14,35 @@ function SignUpDialog() {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const navigate = useNavigate(); // Get navigate function for navigation
+  const navigate = useNavigate();
+
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const isValidForm = () => {
+    const { email, firstName, lastName, password, confirmPassword } = formData;
+    return email && firstName && lastName && password && confirmPassword && isValidEmail(email) && password === confirmPassword;
+  };
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'Enter') {
+        if (isValidForm()) {
+          handleSubmit(event);
+        } else {
+          setErrorMessage("Please fill in all the required fields correctly.");
+          setOpenSnackbar(true);
+        }
+      }
+    };
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,29 +52,29 @@ function SignUpDialog() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validation checks
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage('Error: Passwords do not match');
-      setOpenSnackbar(true);
-      return;
-    }
-
-    // Password criteria checks
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordRegex.test(formData.password)) {
-      setErrorMessage('Error: Password must contain at least one lowercase letter, one uppercase letter, one numeric digit, one special character, and be at least 8 characters long');
+    if (!isValidForm()) {
+      setErrorMessage("Please fill in all the required fields correctly.");
       setOpenSnackbar(true);
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:8090/api/v1/auth/signup', formData);
-      console.log(response.data); // Handle success response
+      const response = await axios.post('http://localhost:8090/api/v1/auth/signup', {
+        email: formData.email,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        password: formData.password
+      });
 
-      // Redirect to dashboard upon successful signup
-      navigate('/SignIn');
+      if (response.status === 200) {
+        setSuccessMessage("Sign up successful! Please check your email for the OTP.");
+        setOpenSnackbar(true);
+        setTimeout(() => {
+          navigate('/verifyEmail', { state: { email: formData.email } });
+        }, 2000);
+      }
     } catch (error) {
-      setErrorMessage('Error: ' + error.message);
+      setErrorMessage(error.response?.data?.responseMessage || "An error occurred");
       setOpenSnackbar(true);
     }
   };
@@ -61,7 +88,7 @@ function SignUpDialog() {
       <div className="bg-white p-8 rounded-lg w-2/6">
         <h2 className="text-xl font-semibold mb-4">Sign Up</h2>
         <form className="mb-4" onSubmit={handleSubmit}>
-        <div className="mb-4">
+          <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
             </label>
@@ -128,13 +155,13 @@ function SignUpDialog() {
               className="mt-1 px-4 py-2 w-full border rounded-md"
             />
           </div>
-          <button type="submit" className="Bg-color text-white px-6 py-2 rounded-md w-full" >
+          <button type="submit" className="bg-gray-600 text-white px-6 py-2 rounded-md w-full">
             Sign Up
           </button>
         </form>
         <div className="text-center">
           <p className="text-sm">Already have an account?</p>
-          <a href="/signin" className="Text-color font-semibold">
+          <a href="/signin" className="text-gray-600 font-semibold">
             Sign In
           </a>
         </div>
@@ -143,7 +170,7 @@ function SignUpDialog() {
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={handleCloseSnackbar}
-        message={errorMessage}
+        message={errorMessage || successMessage}
       />
     </div>
   );

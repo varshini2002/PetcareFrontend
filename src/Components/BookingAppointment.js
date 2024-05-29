@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import Cookies from 'js-cookie';
 import Snackbar from '@mui/material/Snackbar';
 import SnackbarContent from '@mui/material/SnackbarContent';
+import { useNavigate } from 'react-router-dom';
 
 function BookingAppointment() {
     const [ownerDetails, setOwnerDetails] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         phoneNumber: "",
         address: ""
     });
+    const navigate = useNavigate();
 
     const [pets, setPets] = useState([]);
     const [selectedPet, setSelectedPet] = useState('');
@@ -85,14 +88,13 @@ function BookingAppointment() {
             console.log(startDate);
 
             const response = await axios.post('http://localhost:8090/createBooking', {
-                ownerName: ownerDetails.name,
+                ownerName: `${ownerDetails.firstName} ${ownerDetails.lastName}`,
                 ownerEmail: ownerDetails.email,
                 ownerPhoneNumber: ownerDetails.phoneNumber,
                 ownerAddress: ownerDetails.address,
                 startTime: startDate, // Pass the actual startDate value
-                endTime: endDate,
+                endTime: endDate, // Pass the actual endDate value
                 petName: selectedPet,
-                // Pass the actual endDate value
             });
             console.log('Booking submitted:', response.data);
 
@@ -113,6 +115,11 @@ function BookingAppointment() {
 
     const closeSnackbar = () => {
         setSnackbarOpen(false);
+        navigate('/dashboard');
+    };
+
+    const isFormValid = () => {
+        return selectedPet && startDate && endDate;
     };
 
     return (
@@ -120,7 +127,7 @@ function BookingAppointment() {
             <h2 className="text-2xl font-semibold mb-2 poppins-semibold">Book Appointment</h2>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Owner Name:</label>
-                <input type="text" value={ownerDetails.firstName} readOnly className="form-input mt-1 block w-full rounded-md border px-2" />
+                <input type="text" value={`${ownerDetails.firstName} ${ownerDetails.lastName}`} readOnly className="form-input mt-1 block w-full rounded-md border px-2" />
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Owner Email:</label>
@@ -128,11 +135,11 @@ function BookingAppointment() {
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Owner Phone Number:</label>
-                <input type="text" value={ownerDetails.phoneNumber} readOnly className="form-input mt-1 block w-full rounded-md border px-2" />
+                <input type="text" value={ownerDetails.phoneNumber} onChange={(e) => setOwnerDetails({...ownerDetails, phoneNumber: e.target.value})} className="form-input mt-1 block w-full rounded-md border px-2" />
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Owner Address:</label>
-                <input type="text" value={ownerDetails.address} readOnly className="form-input mt-1 block w-full rounded-md border px-2" />
+                <input type="text" value={ownerDetails.address} onChange={(e) => setOwnerDetails({...ownerDetails, address: e.target.value})} className="form-input mt-1 block w-full rounded-md border px-2" />
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Select Pet:</label>
@@ -145,13 +152,32 @@ function BookingAppointment() {
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">Start Date:</label>
-                <input type="date" value={startDate} onChange={handleStartDateChange} className="form-input mt-1 block w-full rounded-md border" />
+                <input
+                    type="date"
+                    value={startDate}
+                    onChange={handleStartDateChange}
+                    min={new Date().toISOString().split('T')[0]} // Disable past dates
+                    className="form-input mt-1 block w-full rounded-md border"
+                />
             </div>
             <div className="my-4">
                 <label className="mb-2 block text-sm font-medium text-gray-700 poppins-regular">End Date:</label>
-                <input type="date" value={endDate} onChange={handleEndDateChange} className="form-input mt-1 block w-full rounded-md border " />
+                <input
+                    type="date"
+                    value={endDate}
+                    onChange={handleEndDateChange}
+                    min={startDate ? new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]} // Disable past dates and set min date as next day of start date
+                    className="form-input mt-1 block w-full rounded-md border"
+                />
             </div>
-            <button onClick={handleSubmit} className="Bg-color text-white py-2 px-4 rounded hover:bg-gray-900 poppins-regular">Book Appointment</button>
+            <button 
+    onClick={handleSubmit} 
+    disabled={!isFormValid()} 
+    className={`py-2 px-4 rounded poppins-regular ${isFormValid() ? 'Bg-color text-white hover:bg-gray-900' : 'bg-gray-300 text-gray-700 cursor-not-allowed'}`}
+>
+    Book Appointment
+</button>
+
             <Snackbar
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 open={snackbarOpen}

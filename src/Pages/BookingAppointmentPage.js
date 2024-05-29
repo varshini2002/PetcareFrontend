@@ -1,14 +1,16 @@
 import BookingAppointment from "../Components/BookingAppointment";
-import NavbarSignIn from "../Components/NavbarSignIn";
-import Footer from "../Components/Footer";
+import NavbarTransparent from "../Components/NavbarTransparent";
+import FooterTransparent from "../Components/FooterTransparent";
 
 function BookingAppointmentPage() {
     return (
-        <div>
-            <NavbarSignIn/>
+        <div className="bg-gradient-to-b from-gray-600 to-transparent">
+            
+            <NavbarTransparent />
             <BookingAppointment />
-            <Footer/>
+            <FooterTransparent/>
         </div>
+
     );
 }
 

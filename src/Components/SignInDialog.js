@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -11,12 +11,23 @@ function SignInDialog() {
     const [errorMessage, setErrorMessage] = useState('');
     const [openSnackbar, setOpenSnackbar] = useState(false);
    
-    function handleChange(event) {
+    useEffect(() => {
+      const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          handleSubmit(event);
+        }
+      };
+      document.addEventListener('keydown', handleKeyPress);
+      return () => {
+        document.removeEventListener('keydown', handleKeyPress);
+      };
+    }, []);
+
+    const handleSubmit = (event) => {
       event.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-   
-      // Assuming you use axios for making API calls
+
       axios.post('http://localhost:8090/api/v1/auth/login', { email, password })
         .then(response => {
           const { statusCode, responseMessage, token } = response.data;
@@ -25,7 +36,6 @@ function SignInDialog() {
             console.log(token);
             navigate("/dashboard");
           } else {
-            // Display login error message
             setLoginMessage(responseMessage);
           }
         })
@@ -33,7 +43,7 @@ function SignInDialog() {
           setErrorMessage('Incorrect email or password');
           setOpenSnackbar(true);
         });
-    }
+    };
 
     const handleCloseSnackbar = () => {
       setOpenSnackbar(false);
@@ -55,7 +65,7 @@ function SignInDialog() {
               </form>
               <div className="flex justify-between items-center">
                     <a href="/forgotpassword" className="Text-color font-semibold pr-40">Forgot Password?</a>
-                  <button onClick={(e) => handleChange(e)} className=" text-white bg-gray-700  px-2 py-2 rounded-md">Sign In</button>
+                  <button onClick={handleSubmit} className=" text-white bg-gray-700  px-2 py-2 rounded-md">Sign In</button>
                   {loginMessage && <p className="text-red-500">{loginMessage}</p>}
               </div>
               <div className="text-center">
@@ -64,11 +74,11 @@ function SignInDialog() {
                 </div>
           </div>
           <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        message={errorMessage}
-      />
+            open={openSnackbar}
+            autoHideDuration={6000}
+            onClose={handleCloseSnackbar}
+            message={errorMessage}
+          />
       </div>
     );
 }

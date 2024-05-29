@@ -1,13 +1,13 @@
 import AddPetForm from "../Components/AddPetForm";
-import Footer from "../Components/Footer";
-import NavbarSignIn from "../Components/NavbarSignIn";
+import FooterTransparent from "../Components/FooterTransparent";
+import NavbarTransparent from "../Components/NavbarTransparent";
 
 function AddPetPage() {
     return (
-        <div>
-            <NavbarSignIn />
+        <div className="bg-gradient-to-b from-gray-600 to-transparent">
+            <NavbarTransparent />
             <AddPetForm />
-            <Footer />
+            <FooterTransparent/>
         </div>
     );
 }

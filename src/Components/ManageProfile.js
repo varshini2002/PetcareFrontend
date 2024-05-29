@@ -91,6 +91,13 @@ function ManageProfile() {
                     <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">Phone Number:</label>
                     <input type="text" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} className={`form-input mt-1 block w-full border rounded-md ${isEditing ? '' : 'bg-gray-100'}`} readOnly={!isEditing} />
                 </div>
+
+                <div className="mb-4">
+                    <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password:</label>
+                    <input type="text" id="password" name="password" value={formData.phoneNumber} onChange={handleChange} className={`form-input mt-1 block w-full border rounded-md ${isEditing ? '' : 'bg-gray-100'}`} readOnly={!isEditing} />
+                </div>
+
+
                 <div className="mb-4">
                     <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address:</label>
                     <textarea id="address" name="address" value={formData.address} onChange={handleChange} className={`form-textarea mt-1 block w-full border rounded-md ${isEditing ? '' : 'bg-gray-100'}`} rows="3" readOnly={!isEditing}></textarea>

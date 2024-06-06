@@ -36,7 +36,7 @@ function BillPage() {
                 };
 
                 const response = await axios.post(
-                    'http://localhost:8090/generate-bill',
+                    'http://172.31.40.114:8090/generate-bill',
                     billData,
                     {
                         headers: {
@@ -69,13 +69,13 @@ function BillPage() {
                 <div className="bg-white rounded-lg shadow p-6 w-full max-w-md">
                     <h2 className="text-2xl font-bold mb-4">Bill Details</h2>
                     <div className="mb-2">
-                        <strong>Service Charge:</strong> ${billDetails.servicecharge}
+                        <strong>Service Charge:</strong> ₹{billDetails.servicecharge}
                     </div>
                     <div className="mb-2">
-                        <strong>GST (18%):</strong> ${billDetails.gst}
+                        <strong>GST (18%):</strong> ₹{billDetails.gst}
                     </div>
                     <div className="mb-2">
-                        <strong>Total Charge:</strong> ${billDetails.totalamount}
+                        <strong>Total Charge:</strong> ₹{billDetails.totalamount}
                     </div>
                     <div className="mt-6 flex justify-center">
                         <button

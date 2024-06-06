@@ -33,7 +33,7 @@ function BookingAppointment() {
             const email = decodedToken.sub;
 
             // Use email to fetch user data
-            axios.get(`http://localhost:8090/api/v1/auth/getuser?email=${email}`)
+            axios.get(`http://172.31.40.114:8090/api/v1/auth/getuser?email=${email}`)
                 .then(response => {
                     const userData = response.data;
                     // Set form data with user details
@@ -60,7 +60,7 @@ function BookingAppointment() {
             console.log(token);
             const fetchPets = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:8090/getPetByOwnerEmail?email=${email}`);
+                    const response = await axios.get(`http://172.31.40.114:8090/getPetByOwnerEmail?email=${email}`);
                     setPets(response.data);
                 } catch (error) {
                     console.error('Error fetching pets:', error);
@@ -87,7 +87,7 @@ function BookingAppointment() {
         try {
             console.log(startDate);
 
-            const response = await axios.post('http://localhost:8090/createBooking', {
+            const response = await axios.post('http://172.31.40.114:8090/createBooking', {
                 ownerName: `${ownerDetails.firstName} ${ownerDetails.lastName}`,
                 ownerEmail: ownerDetails.email,
                 ownerPhoneNumber: ownerDetails.phoneNumber,

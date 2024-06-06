@@ -30,7 +30,7 @@ function AddPetForm() {
     }
 
     try {
-      const response = await axios.post('http://localhost:8090/addPet', {
+      const response = await axios.post('http://172.31.40.114:8090/addPet', {
         name,
         species,
         breed,

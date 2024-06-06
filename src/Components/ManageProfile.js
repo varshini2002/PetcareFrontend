@@ -21,7 +21,7 @@ function ManageProfile() {
             const email = decodedToken.sub;
 
             // Use email to fetch user data
-            axios.get(`http://localhost:8090/api/v1/auth/getuser?email=${email}`)
+            axios.get(`http://172.31.40.114:8090/api/v1/auth/getuser?email=${email}`)
                 .then(response => {
                     const userData = response.data;
                     // Set form data with user details
@@ -52,7 +52,7 @@ function ManageProfile() {
         
 
         // Example of sending edited data to backend
-        axios.put('http://localhost:8090/api/v1/auth/updateUser', formData,{
+        axios.put('http://172.31.40.114:8090/api/v1/auth/updateUser', formData,{
             headers: {
                 email: email
             }

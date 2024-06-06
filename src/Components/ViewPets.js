@@ -24,7 +24,7 @@ function ViewPets() {
         console.log(token);
                 const fetchPets = async () => {
                     try {
-                        const response = await axios.get(`http://localhost:8090/getPetByOwnerEmail?email=${email}`)
+                        const response = await axios.get(`http://172.31.40.114:8090/getPetByOwnerEmail?email=${email}`)
                         console.log(response.data)
                         setPets(response.data);
                         setLoading(false); 
@@ -47,7 +47,7 @@ function ViewPets() {
             if (!confirmed) return;
 
             // Make a DELETE request to delete the pet
-            await axios.delete(`http://localhost:8090/deletePet/${petId}`);
+            await axios.delete(`http://172.31.40.114:8090/deletePet/${petId}`);
             // Remove the deleted pet from the pets list
             setPets(pets.filter(pet => pet.id !== petId));
             setSnackbarType('success');

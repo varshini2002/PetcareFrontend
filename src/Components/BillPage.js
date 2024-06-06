@@ -36,7 +36,7 @@ function BillPage() {
                 };
 
                 const response = await axios.post(
-                    'http://172.31.40.114:8090/generate-bill',
+                    'http://3.110.197.17:8090/generate-bill',
                     billData,
                     {
                         headers: {

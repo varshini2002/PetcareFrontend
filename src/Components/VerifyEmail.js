@@ -15,7 +15,7 @@ const VerifyEmail = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://172.31.40.114:8090/api/v1/auth/validateOtp', {
+      const response = await axios.post('http://3.110.197.17:8090/api/v1/auth/validateOtp', {
         email,
         otp,
       });

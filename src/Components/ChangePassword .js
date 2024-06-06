@@ -10,7 +10,7 @@ const ChangePassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://172.31.40.114:8090/api/v1/auth/changePassword', {
+      const response = await axios.post('http://3.110.197.17:8090/api/v1/auth/changePassword', {
         email,
         password: oldPassword,
         newPassword

@@ -26,7 +26,7 @@ function ResetPassword() {
     }
     console.log(email, newPassword);
     try {
-      const response = await axios.put("http://3.110.197.17:8090/api/v1/auth/resetPassword", {
+      const response = await axios.put("http://65.0.4.44:8090/api/v1/auth/resetPassword", {
         email: email,
         newPassword: newPassword
       });

@@ -25,7 +25,7 @@ function ViewAppointments() {
             console.log(email);
             const fetchAppointments = async () => {
                 try {
-                    const response = await axios.get(`http://3.110.197.17:8090/getBookingByOwnerEmail?ownerEmail=${email}`);
+                    const response = await axios.get(`http://65.0.4.44:8090/getBookingByOwnerEmail?ownerEmail=${email}`);
                     setBookedAppointments(response.data);
                     console.log(response.data);
                     setLoading(false);
@@ -51,7 +51,7 @@ function ViewAppointments() {
             const confirmed = window.confirm('Are you sure you want to cancel this appointment?');
             if (!confirmed) return;
 
-            await axios.delete(`http://3.110.197.17:8090/deleteBooking`, {
+            await axios.delete(`http://65.0.4.44:8090/deleteBooking`, {
                 params: {
                     ownerEmail: ownerEmail,
                     petName: petName

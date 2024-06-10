@@ -59,7 +59,7 @@ function SignUpDialog() {
     }
 
     try {
-      const response = await axios.post('http://3.110.197.17:8090/api/v1/auth/signup', {
+      const response = await axios.post('http://65.0.4.44:8090/api/v1/auth/signup', {
         email: formData.email,
         firstName: formData.firstName,
         lastName: formData.lastName,

@@ -18,7 +18,7 @@ function ForgotPasswordDialog() {
   const handleChange = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://3.110.197.17:8090/api/v1/auth/forgotPassword", { email });
+      const response = await axios.post("http://65.0.4.44:8090/api/v1/auth/forgotPassword", { email });
       if (response.status === 200) {
         setShowOTP(true);
       } else {
@@ -34,7 +34,7 @@ function ForgotPasswordDialog() {
   const handleOTPValidation = () => {
     const otp = otpValues.join("");
     axios
-      .post("http://3.110.197.17:8090/api/v1/auth/validateOtp", {
+      .post("http://65.0.4.44:8090/api/v1/auth/validateOtp", {
         email: email,
         otp: otp
       })

@@ -28,7 +28,7 @@ function SignInDialog() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      axios.post('http://65.0.4.44:8090/api/v1/auth/login', { email, password })
+      axios.post('http://65.2.189.241:8090/api/v1/auth/login', { email, password })
         .then(response => {
           const { statusCode, responseMessage, token } = response.data;
           if (statusCode === 200) {

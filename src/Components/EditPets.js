@@ -16,7 +16,7 @@ function EditPet() {
     useEffect(() => {
         const fetchPetDetails = async () => {
             try {
-                const response = await axios.get(`http://65.0.4.44:8090/getPet/${petId}`);
+                const response = await axios.get(`http://65.2.189.241:8090/getPet/${petId}`);
                 setEditedPet(response.data);
                 setLoading(false);
             } catch (error) {
@@ -36,7 +36,7 @@ function EditPet() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://65.0.4.44:8090/updatePet/${petId}`, editedPet);
+            await axios.put(`http://65.2.189.241:8090/updatePet/${petId}`, editedPet);
             console.log('Updated pet details:', editedPet);
             setSnackbarType('success');
             setSnackbarMessage('Pet details updated successfully');
